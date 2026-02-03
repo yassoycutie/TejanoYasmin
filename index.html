@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My JS Practice</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ffe6f2 0%, #ffd6eb 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+            border: 3px solid #ffb6c1;
+        }
+        
+        h1 {
+            color: #ff69b4;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 0 #ffc0cb;
+        }
+        
+        h2 {
+            color: #ff1493;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px dashed #ffb6c1;
+            padding-bottom: 10px;
+        }
+        
+        .feature-box {
+            background: #fff0f5;
+            padding: 20px;
+            border-radius: 20px;
+            margin: 25px 0;
+            border: 2px solid #ffc0cb;
+            transition: transform 0.3s;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+        }
+        
+        button {
+            background: linear-gradient(to right, #ff69b4, #ff1493);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 0 #c71585;
+        }
+        
+        button:hover {
+            background: linear-gradient(to right, #ff1493, #ff69b4);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 0 #c71585;
+        }
+        
+        button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 0 #c71585;
+        }
+        
+        input[type="text"] {
+            padding: 15px;
+            font-size: 16px;
+            border: 3px solid #ffb6c1;
+            border-radius: 50px;
+            width: 70%;
+            margin: 15px 0;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #ff69b4;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+        }
+        
+        #output {
+            background: #fffafa;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px;
+            font-size: 20px;
+            color: #ff1493;
+            border: 2px dotted #ffb6c1;
+            min-height: 30px;
+            transition: all 0.3s;
+        }
+        
+        #hoverText {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff69b4;
+            padding: 20px;
+            background: linear-gradient(45deg, #fff0f5, #ffe6f2);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+        }
+        
+        #hoverText:hover {
+            background: linear-gradient(45deg, #ffe6f2, #ffd6eb);
+            border-color: #ff69b4;
+            letter-spacing: 1px;
+        }
+        
+        .instructions {
+            background: #fff8fb;
+            padding: 15px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #ff69b4;
+            text-align: left;
+        }
+        
+        .step-number {
+            background-color: #ff69b4;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-block;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        footer {
+            margin-top: 40px;
+            color: #ff69b4;
+            font-size: 14px;
+            padding: 15px;
+            border-top: 2px dashed #ffc0cb;
+        }
+        
+        .success-message {
+            color: #ff1493;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>JavaScript Practice</h1>
+    
+    <div class="feature-box">
+        <h2>Alert Button</h2>
+        <p>Click this button to see a friendly message</p>
+        <button onclick="sayHello()">Say Hello</button>
+    </div>
+    
+    <div class="feature-box">
+        <h2>Text Display</h2>
+        <p>Type something and see it appear below</p>
+        <input type="text" id="userInput" placeholder="Enter your text here">
+        <br>
+        <button onclick="showInput()">Show Text</button>
+        <div class="instructions">
+            <strong>Output Display:</strong>
+            <p id="output">Your text will appear here</p>
+        </div>
+    </div>
+    
+    <div class="feature-box">
+        <h2>Hover Effect</h2>
+        <p>Move your mouse over the text below for a color change effect</p>
+        <p id="hoverText">Hover over me!</p>
+    </div>
+    
+    <footer>
+        JavaScript Practice Page
+    </footer>
+</div>
+
+<script>
+    function sayHello() {
+        alert("Hello, everyone!.");
+    }
+
+    function showInput() {
+        let text = document.getElementById("userInput").value;
+        let outputElement = document.getElementById("output");
+        
+        if (text.trim() === "") {
+            outputElement.innerHTML = "Please type something in the text box above";
+            outputElement.style.color = "#ff69b4";
+            outputElement.style.fontStyle = "italic";
+        } else {
+            outputElement.innerHTML = "<strong>" + text;
+            outputElement.style.color = "#ff1493";
+            outputElement.style.fontStyle = "normal";
+            
+            // Clear input after showing
+            document.getElementById("userInput").value = "";
+        }
+    }
+
+    let hoverText = document.getElementById("hoverText");
+    let originalText = hoverText.innerHTML;
+    let originalColor = hoverText.style.color;
+    let originalBackground = hoverText.style.background;
+    
+    hoverText.onmouseover = function() {
+        this.style.color = "white";
+        this.style.background = "linear-gradient(45deg, #ff69b4, #ff1493)";
+        this.innerHTML = "Hover Over Me!";
+    };
+    
+    hoverText.onmouseout = function() {
+        this.style.color = originalColor;
+        this.style.background = originalBackground;
+        this.innerHTML = originalText;
+    };
+</script>
+
+</body>
+</html>
